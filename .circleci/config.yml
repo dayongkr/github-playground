@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   lint:
     docker:
-      - image: node:18
+      - image: node:20
     resource_class: small
 
     steps:
@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Check Prettier
           command: |
-            git diff --name-only --diff-filter=ACMRUXB origin/main | xargs -r pnpm prettier --check
+            git diff --name-only --diff-filter=ACMRUXB origin/main | xargs -r pnpm prettier --check --ignore-unknown
 
 workflows:
   main:
