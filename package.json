@@ -1,0 +1,13 @@
+{
+  "name": "ci-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.7.0",
+    "prettier": "^3.3.3"
+  }
+}
