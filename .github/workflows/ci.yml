@@ -29,6 +29,7 @@ jobs:
         run: pnpm install -D
 
       - name: Check ESLint
+        shell: bash -e
         run: git diff --name-only --diff-filter=ACMRUXB origin/main | grep -E '\.(js|ts|tsx)$' | xargs -r pnpm eslint
 
       - name: Check Prettier
