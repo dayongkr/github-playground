@@ -36,3 +36,8 @@ jobs:
           name: Check Prettier
           command: |
             git diff --name-only --diff-filter=ACMRUXB origin/main | xargs -r pnpm prettier --check
+
+workflows:
+  main:
+    jobs:
+      - lint
