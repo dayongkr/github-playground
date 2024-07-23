@@ -3,11 +3,11 @@ version: 2.1
 jobs:
   lint:
     docker:
-      - image: node:20
-      resource_class: large
-      parallelism: 10
+      - image: node:18
+    resource_class: large
+    parallelism: 10
 
-      steps:
+    steps:
       - checkout
       - restore_cache:
           name: Restore pnpm Package Cache
