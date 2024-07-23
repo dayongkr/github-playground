@@ -32,4 +32,4 @@ jobs:
         run: git diff --name-only --diff-filter=ACMRUXB origin/main | grep -E '\.(js|ts|tsx)$' | xargs -r pnpm eslint
 
       - name: Check Prettier
-        run: git diff --name-only --diff-filter=ACMRUXB origin/main | grep -E '\.(js|ts|tsx)$' | xargs -r pnpm prettier --check
+        run: git diff --name-only --diff-filter=ACMRUXB origin/main | xargs -r pnpm prettier --check --ignore-unknown

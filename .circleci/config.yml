@@ -3,9 +3,8 @@ version: 2.1
 jobs:
   lint:
     docker:
-      - image: node:18
-    resource_class: large
-    parallelism: 10
+      - image: node:20
+    resource_class: small
 
     steps:
       - checkout
@@ -30,9 +29,15 @@ jobs:
             - .pnpm-store
       - run:
           name: Check ESLint
+          shell: bash -e
           command: |
             git diff --name-only --diff-filter=ACMRUXB origin/main | grep -E '\.(js|ts|tsx)$' | xargs -r pnpm eslint
       - run:
           name: Check Prettier
           command: |
-            git diff --name-only --diff-filter=ACMRUXB origin/main | xargs -r pnpm prettier --check
+            git diff --name-only --diff-filter=ACMRUXB origin/main | xargs -r pnpm prettier --check --ignore-unknown
+
+workflows:
+  main:
+    jobs:
+      - lint
