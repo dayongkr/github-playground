@@ -4,7 +4,7 @@ jobs:
   lint:
     docker:
       - image: node:18
-    resource_class: large
+    resource_class: small
     parallelism: 10
 
     steps:
@@ -30,6 +30,7 @@ jobs:
             - .pnpm-store
       - run:
           name: Check ESLint
+          shell: bash
           command: |
             git diff --name-only --diff-filter=ACMRUXB origin/main | grep -E '\.(js|ts|tsx)$' | xargs -r pnpm eslint
       - run:
