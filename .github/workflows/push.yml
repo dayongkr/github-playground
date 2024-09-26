@@ -19,15 +19,13 @@ jobs:
           node-version: '20'
 
       - name: Add file to repository
-        run: echo "hello$(date + '%Y-%m-%d %H:%M:%S')" > result.json
-
-      - name: Git Pull
-        run: git pull
+        run: echo "hello $(date +'%Y-%m-%d %H:%M:%S')" > result.json
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add result.json
-          git commit -m "Update data.json $(date +'%Y-%m-%d')"
+          git fetch
+          git commit -m "Update data.json $(date +'%Y-%m-%d %H:%M:%S')"
           git push
