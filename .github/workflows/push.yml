@@ -21,6 +21,9 @@ jobs:
       - name: Add file to repository
         run: echo "hello$(date + '%Y-%m-%d %H:%M:%S')" > result.json
 
+      - name: Git Pull
+        run: git pull
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
